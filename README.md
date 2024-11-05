@@ -65,7 +65,7 @@ Com o WeatherWise, os usuários podem consultar o clima de qualquer cidade brasi
     └── app.php       # Configuração central
 ```
 
-### Frontend (`/frontend`)
+### Frontend (`/front-react`)
 ```
 ├── src/
 │   ├── components/   # Componentes reutilizáveis
@@ -113,7 +113,7 @@ cp .env.example .env
 
 3. **Configure o Frontend**
 ```bash
-cd frontend
+cd front-react
 npm install
 ```
 
@@ -154,7 +154,7 @@ php artisan migrate
 php artisan serve
 
 # Frontend
-cd frontend
+cd front-react
 npm start
 ```
 
