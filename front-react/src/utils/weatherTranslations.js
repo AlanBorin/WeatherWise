@@ -1,5 +1,10 @@
 const weatherTranslations = {
     "Clear ": "Limpo",
+    "Clear": "Limpo",
+    "Light Rain, Thunderstorm In Vicinity": "Chuva fraca, trovoada nas proximidades",
+    "Rain, Thunderstorm In Vicinity": "Chuva, trovoada nas proximidades",
+    "Thunderstorm In Vicinity": "Trovoada nas proximidades",
+    "Light Rain With Thunderstorm": "Chuva fraca com trovoada",
     "Cloudy ": "Nublado",
     "Partly Cloudy ": "Parcialmente nublado",
     "Partly cloudy": "Parcialmente nublado",
