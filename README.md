@@ -2,6 +2,11 @@
 
 > Sistema de consultas de previsão do tempo e histórico de consultas
 
+✨ Demonstração
+<div align="center">
+  <img src="front-react/public/assets/demonstracao.gif" alt="WeatherWise Demo" width="800"/>
+</div>
+
 ## 📌 Índice
 
 - [Sobre o Projeto](#sobre-o-projeto)
