@@ -172,7 +172,3 @@ Acesse:
 ## 📝 Considerações Finais
 
 O WeatherWise é um projeto em constante evolução. Contribuições são bem-vindas! Para contribuir, por favor crie um fork do repositório e submeta um Pull Request com suas alterações.
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
