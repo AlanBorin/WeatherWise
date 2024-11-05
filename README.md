@@ -105,7 +105,7 @@ Com o WeatherWise, os usuários podem consultar o clima de qualquer cidade brasi
 
 1. **Clone o Repositório**
 ```bash
-git clone https://github.com/seu-usuario/weatherwise.git
+git clone https://github.com/AlanBorin/WeatherWise.git
 cd weatherwise
 ```
 
