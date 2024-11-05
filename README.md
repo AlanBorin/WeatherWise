@@ -129,7 +129,7 @@ npm install
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_DATABASE=weatherwise_db
+DB_DATABASE=postgres
 DB_USERNAME=seu_usuario
 DB_PASSWORD=sua_senha
 ```
