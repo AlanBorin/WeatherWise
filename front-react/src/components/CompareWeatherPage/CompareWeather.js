@@ -56,8 +56,8 @@ const CompareWeather = () => {
     if (!weather) return null;
 
     const translatedDescription =
-          weatherTranslations[weather.current.weather_descriptions[0]] ||
-          weather.current.weather_descriptions[0];
+      weatherTranslations[weather.current.weather_descriptions[0]] ||
+      weather.current.weather_descriptions[0];
 
     return (
       <div className="weather-card">
@@ -71,8 +71,10 @@ const CompareWeather = () => {
         </div>
         <div className="description">
           <Cloud className="icon" />
-          <span>{weatherTranslations[weather.current.weather_descriptions[0]] ||
-            weather.current.weather_descriptions[0]}</span>
+          <span>
+            {weatherTranslations[weather.current.weather_descriptions[0]] ||
+              weather.current.weather_descriptions[0]}
+          </span>
         </div>
       </div>
     );
@@ -81,9 +83,12 @@ const CompareWeather = () => {
   return (
     <div className="compare-weather-container">
       <h1>Comparar Previsão do Tempo</h1>
-      
+
       <div className="input-section">
-        <div className="input-group">
+        <div >
+          <div>
+            <span className="city-name">{city1}</span>
+          </div>
           <input
             type="text"
             value={cep1}
@@ -91,9 +96,11 @@ const CompareWeather = () => {
             placeholder="Insira um CEP"
             className="input-cep"
           />
-          <span className="city-name">{city1}</span>
         </div>
-        <div className="input-group">
+        <div>
+          <div>
+            <span className="city-name">{city2}</span>
+          </div>
           <input
             type="text"
             value={cep2}
@@ -101,10 +108,19 @@ const CompareWeather = () => {
             placeholder="Insira um CEP"
             className="input-cep"
           />
-          <span className="city-name">{city2}</span>
         </div>
-        <button onClick={handleCompareWeather} disabled={loading} className="search-button">
-          {loading ? "Comparando..." : <><Search className="icon" /> Comparar Cidades</>}
+        <button
+          onClick={handleCompareWeather}
+          disabled={loading}
+          className="search-button"
+        >
+          {loading ? (
+            "Comparando..."
+          ) : (
+            <>
+              <Search className="icon" /> Comparar Cidades
+            </>
+          )}
         </button>
       </div>
 

@@ -4,6 +4,7 @@ import "./Home.css";
 import { formatInTimeZone } from "date-fns-tz";
 import weatherTranslations from "../../utils/weatherTranslations";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Home = () => {
   const [cep, setCep] = useState("");
@@ -58,7 +59,11 @@ const Home = () => {
 
       await handleSaveWeather(weatherResponse.data, fetchedCity);
     } catch (err) {
-      setError(err.message);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Falha ao salvar a previsão.",
+      });
     }
   };
 
@@ -103,8 +108,11 @@ const Home = () => {
       };
       setHistory((prevHistory) => [...prevHistory, newEntry]);
     } catch (err) {
-      console.error(err);
-      alert("Falha ao salvar a previsão.");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Falha ao salvar a previsão.",
+      });
     }
   };
 
@@ -137,13 +145,22 @@ const Home = () => {
           },
         });
 
-        alert("Consulta salva com sucesso!");
+        Swal.fire({
+          icon: "success",
+          text: "Consulta salva com sucesso.",
+        });
       } catch (err) {
-        console.error(err);
-        alert("Falha ao salvar consulta.");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Falha ao salvar consulta.",
+        });
       }
     } else {
-      alert("Nenhuma previsão disponível para salvar.");
+      Swal.fire({
+        icon: "warning",
+        text: "Nenhuma previsão disponível para salvar.",
+      });
     }
   };
 
@@ -155,7 +172,10 @@ const Home = () => {
           type="text"
           placeholder="Informe o CEP"
           value={cep}
-          onChange={(e) => setCep(e.target.value)}
+          onChange={(e) => {
+            const onlyNumbers = e.target.value.replace(/\D/g, "");
+            setCep(onlyNumbers.slice(0, 8));
+          }}
         />
         <input
           type="text"
@@ -163,7 +183,12 @@ const Home = () => {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <button onClick={handleFetchWeather}>Buscar</button>
+        <button
+          style={{ backgroundColor: "#32CD32" }}
+          onClick={handleFetchWeather}
+        >
+          Buscar
+        </button>
         <div>
           <Link to="/saved-queries">
             <button>Ver Consultas Salvas</button>
@@ -175,44 +200,55 @@ const Home = () => {
       </div>
       {error && <p className="error-message">{error}</p>}
       {weather && (
-        <div className="weather-info">
+        <div className="weather-info" style={{ backgroundColor: "#d7d7d8"}}>
           <h2>{`Previsão para ${weather.location.name}`}</h2>
-          <p>{`Temperatura: ${weather.current.temperature} °C`}</p>
-          <p>{`Condições: ${
+          <div>
+            <span style={{ fontWeight: "bold" }}>Temperatura:</span>
+            <span>{` ${weather.current.temperature} °C`}</span>
+          </div>  
+          <div>
+          <span  style={{ fontWeight: "bold" }}>Condições:</span>
+          <span>{` ${
             weatherTranslations[weather.current.weather_descriptions[0]] ||
             weather.current.weather_descriptions[0]
-          }`}</p>
-          <p>{`Velocidade do vento: ${weather.current.wind_speed} km/h`}</p>
+          }`}</span>
+           </div> 
+           <div>
+            <span style={{ fontWeight: "bold" }}>Velocidade do vento:</span>
+            <span>{` ${weather.current.wind_speed} km/h`}</span>
+          </div> 
           <button onClick={handleSaveQuery}>Salvar Consulta</button>
         </div>
       )}
       {history.length > 0 && (
-        <div className="history">
-          <h3>Histórico de Consultas</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Data</th>
-                <th>Cidade</th>
-                <th>Temperatura (°C)</th>
-                <th>Descrição do Tempo</th>
-                <th>Velocidade do Vento (km/h)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {history
-                .sort((a, b) => new Date(b.date) - new Date(a.date))
-                .map((entry, index) => (
-                  <tr key={index}>
-                    <td>{new Date(entry.date).toLocaleString("pt-BR")}</td>
-                    <td>{entry.city}</td>
-                    <td>{entry.temperature} °C</td>
-                    <td>{entry.description}</td>
-                    <td>{entry.wind_speed} km/h</td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+        <div style={{ backgroundColor: "#d7d7d8", padding: 15 }}>
+          <div className="history">
+            <h3>Histórico de Consultas</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Cidade</th>
+                  <th>Temperatura (°C)</th>
+                  <th>Descrição do Tempo</th>
+                  <th>Velocidade do Vento (km/h)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {history
+                  .sort((a, b) => new Date(b.date) - new Date(a.date))
+                  .map((entry, index) => (
+                    <tr key={index}>
+                      <td>{new Date(entry.date).toLocaleString("pt-BR")}</td>
+                      <td>{entry.city}</td>
+                      <td>{entry.temperature} °C</td>
+                      <td>{entry.description}</td>
+                      <td>{entry.wind_speed} km/h</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>
