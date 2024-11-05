@@ -86,6 +86,8 @@ Com o WeatherWise, os usuários podem consultar o clima de qualquer cidade brasi
 - Gerenciamento de estado com Hooks
 - Requisições HTTP com Axios
 
+ Foram utilizados nomes de váriaveis, funções e arquivos no padrão de nomenclatura em inglês.
+
 ## 🚀 Instalação e Execução
 
 ### Pré-requisitos
@@ -126,8 +128,25 @@ DB_DATABASE=weatherwise_db
 DB_USERNAME=seu_usuario
 DB_PASSWORD=sua_senha
 ```
+2. Variáveis de Ambiente Frontend (.env)
 
-2. **Inicialização**
+```env
+
+REACT_APP_API_KEY=sua_chave_api_weatherstack
+
+```
+
+> ⚠️ Importante: Para obter sua chave API do Weatherstack:
+
+> 1. Acesse https://weatherstack.com/signup/free
+
+> 2. Crie uma conta gratuita
+
+> 3. Copie a chave API fornecida
+
+> 4. Adicione a chave no arquivo .env do frontend
+
+3. **Inicialização**
 ```bash
 # Backend
 cd backend
