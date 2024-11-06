@@ -36,18 +36,17 @@ class AuthController extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-    
+
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 400);
         }
-    
+
         $user = User::where('email', $request->email)->first();
-    
+
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json(['error' => 'Credenciais inválidas'], 401);
         }
-    
+
         return response()->json(['message' => 'Login bem-sucedido', 'user' => $user], 200);
     }
-    
 }

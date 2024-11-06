@@ -18,7 +18,7 @@ class WeatherHistoryController extends Controller
             'wind_speed' => 'required|numeric',
             'date' => 'required|date',
         ]);
-    
+
         WeatherHistory::create([
             'user_id' => $request->user_id,
             'city' => $request->city,
@@ -27,10 +27,10 @@ class WeatherHistoryController extends Controller
             'wind_speed' => $request->wind_speed,
             'date' => $request->date,
         ]);
-    
+
         return response()->json(['message' => 'Weather data saved successfully']);
     }
-    
+
 
     public function index($user_id)
     {

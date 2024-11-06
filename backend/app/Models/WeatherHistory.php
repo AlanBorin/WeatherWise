@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class WeatherHistory extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'weather_history';
 
     protected $fillable = ['user_id', 'city', 'temperature', 'description', 'wind_speed', 'date'];

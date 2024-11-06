@@ -15,4 +15,4 @@ Route::get('/weather-history/{user_id}', [WeatherHistoryController::class, 'inde
 
 Route::post('/saved-queries', [SavedQueryController::class, 'store']);
 
-Route::get('/saved-queries/{user_id}', [SavedQueryController::class, 'index']); 
+Route::get('/saved-queries/{user_id}', [SavedQueryController::class, 'index']);
