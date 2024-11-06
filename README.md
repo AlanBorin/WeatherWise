@@ -2,6 +2,11 @@
 
 > Sistema de consultas de previsão do tempo e histórico de consultas
 
+## Demonstração ✨
+<div align="center">
+  <img src="front-react/public/assets/demonstracao.gif" alt="WeatherWise Demo" width="800"/>
+</div>
+
 ## 📌 Índice
 
 - [Sobre o Projeto](#sobre-o-projeto)
@@ -100,7 +105,7 @@ Com o WeatherWise, os usuários podem consultar o clima de qualquer cidade brasi
 
 1. **Clone o Repositório**
 ```bash
-git clone https://github.com/seu-usuario/weatherwise.git
+git clone https://github.com/AlanBorin/WeatherWise.git
 cd weatherwise
 ```
 
@@ -124,7 +129,7 @@ npm install
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_DATABASE=weatherwise_db
+DB_DATABASE=postgres
 DB_USERNAME=seu_usuario
 DB_PASSWORD=sua_senha
 ```
@@ -167,7 +172,3 @@ Acesse:
 ## 📝 Considerações Finais
 
 O WeatherWise é um projeto em constante evolução. Contribuições são bem-vindas! Para contribuir, por favor crie um fork do repositório e submeta um Pull Request com suas alterações.
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
